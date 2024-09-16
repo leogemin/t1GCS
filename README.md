@@ -3,5 +3,5 @@
 Frederico Abreu Miguens Nizoli,
 Gabriel Carreno Hoppe,
 Gabriel Gerhardt de Marque,
-Juliano Parmeggiani Chies,
+Juliano Parmegiani Chies,
 Leonardo Gemin Pereira
