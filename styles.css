@@ -51,12 +51,40 @@ header {
       }
 }
 
+
+.addNew {
+      width: 63%;
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+            background-color: transparent;
+            outline: none;
+            border: 3px solid var(--lightPurple);
+            color: var(--lightPurple);
+            font-weight: bold;
+            font-size: small;
+            border-radius: 10px;
+            padding: 7px 12px;
+            cursor: pointer;
+      
+            transition: .1s all ease;
+      }
+
+      button:hover {
+            background-color: var(--lightPurple);
+            color: white;
+      }
+}
+
 .container {
       width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100%;
+      gap: 10px;
 }
 .table {
       display: flex;
@@ -64,7 +92,7 @@ header {
       border: 1px solid var(--gray);
       border-radius: 30px;
       width: 65%;
-      height: 80vh;
+      height: 75vh;
       padding: 10px 30px;
       backdrop-filter: blur(20px);
 }
@@ -88,6 +116,13 @@ header {
 
       h5 {
             text-align: center;
+      }
+
+      input {
+            width: 90%;
+            background: none;
+            border: none;
+            outline: none;
       }
 }
 
