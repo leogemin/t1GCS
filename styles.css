@@ -1,7 +1,17 @@
 :root {
-      --darkPurple: #23143d;
-      --lightPurple: #493669;
-      --gray: #0a0a0a;
+      --backgroundColorSecondary: #493669;
+      --textColor: #ffffff;
+      --textSecondColor: #0a0a0a;
+      --backgroundColor: whitesmoke;
+      --tableBackground: #ffffff4A;
+      --buttonColor: #493669;
+}
+.darkmode {
+      --backgroundColor: #111111;
+      --textSecondColor: whitesmoke;
+      --tableBackground: #0000003A;
+      --buttonColor: #744abc;
+
 }
 
 * {
@@ -9,17 +19,17 @@
       box-sizing: border-box;
       font-family: "Rubik", sans-serif;
 
-      color: var(--gray);
+      color: var(--textSecondColor);
 }
 
 body {
-      background-color: var(--lightPurple);
+      background-color: var(--backgroundColorSecondary);
       position: relative;
 }
 body::before {
       content: '';
       position: absolute;
-      background-color: whitesmoke;
+      background-color: var(--backgroundColor);
       height: 100vh;
       width: 100vw;
       top:0;
@@ -60,8 +70,8 @@ header {
       button {
             background-color: transparent;
             outline: none;
-            border: 3px solid var(--lightPurple);
-            color: var(--lightPurple);
+            border: 3px solid var(--buttonColor);
+            color: var(--buttonColor);
             font-weight: bold;
             font-size: small;
             border-radius: 10px;
@@ -72,8 +82,8 @@ header {
       }
 
       button:hover {
-            background-color: var(--lightPurple);
-            color: white;
+            background-color: var(--buttonColor);
+            color: var(--textColor);
       }
 }
 
@@ -89,19 +99,19 @@ header {
 .table {
       display: flex;
       flex-direction: column;
-      border: 1px solid var(--gray);
+      border: 1px solid var(--textSecondColor);
       border-radius: 30px;
       width: 65%;
       height: 75vh;
       padding: 10px 30px;
       backdrop-filter: blur(10px);
-      background-color: #ffffff4A;
+      background-color: var(--tableBackground);
 }
 .row, .tableHead {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       width: 100%;
-      border-bottom: 1px solid var(--gray);
+      border-bottom: 1px solid var(--textSecondColor);
 }
 .row {
       height: 75px;
@@ -138,7 +148,66 @@ header {
 
       legend {
             font-size: 14px;
-            color: white;
+            color: var(--textColor);
             padding: 5px 10px;
       }
+}
+
+.switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+}
+
+.switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+}
+
+.slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+}
+
+.slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+}
+
+input:checked + .slider {
+      background-color: #2a2a2a;
+}
+
+input:focus + .slider {
+      box-shadow: 0 0 1px #2a2a2a;
+}
+
+input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+}
+
+.slider.round {
+      border-radius: 34px;
+}
+
+.slider.round:before {
+      border-radius: 50%;
 }
