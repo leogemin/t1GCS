@@ -11,7 +11,6 @@
       --textSecondColor: whitesmoke;
       --tableBackground: #0000003A;
       --buttonColor: #744abc;
-
 }
 
 * {
@@ -112,12 +111,7 @@ header {
       grid-template-columns: repeat(7, 1fr);
       width: 100%;
       border-bottom: 1px solid var(--textSecondColor);
-}
-.row {
       height: 75px;
-}
-.tableHead {
-      height: 65px;
 }
 
 .cell {
@@ -153,6 +147,10 @@ header {
       }
 }
 
+
+/*                           *   
+      Botão Toggle Theme      
+*                           */                            
 .switch {
       position: relative;
       display: inline-block;
