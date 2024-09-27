@@ -42,6 +42,7 @@ header {
       height: 100px;
       padding: 10px 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
 }
@@ -95,7 +96,7 @@ header {
       height: 100%;
       gap: 10px;
 }
-.table {
+.table { /* CSS da Tabela*/
       display: flex;
       flex-direction: column;
       border: 1px solid var(--textSecondColor);
@@ -124,6 +125,7 @@ header {
       }
 
       input {
+            font-weight: normal;
             width: 90%;
             background: none;
             border: none;
