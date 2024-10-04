@@ -14,16 +14,16 @@ const addNew = () => {
             newRow.className = "row"
 
             for(let i = 0; i<7;i++){
-                  const divv = document.createElement("div")
-                  divv.className = "cell"
+                  const celula = document.createElement("div")
+                  celula.className = "cell"
 
-                  const inputt = document.createElement("input")
-                  inputt.type = "text"
-                  inputt.value = ""
+                  const cellInput = document.createElement("input")
+                  cellInput.type = "text"
+                  cellInput.value = ""
 
-                  divv.appendChild(inputt)
+                  celula.appendChild(cellInput)
 
-                  newRow.appendChild(divv)
+                  newRow.appendChild(celula)
             }
 
             tabela.insertBefore(newRow, primeiraRow)
