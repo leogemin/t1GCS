@@ -128,8 +128,14 @@ header {
             font-weight: normal;
             width: 90%;
             background: none;
-            border: none;
+            border: 1px solid var(--textSecondColor);
+            border-radius: 5px;
+            padding: .2em;
             outline: none;
+      
+            &:disabled {
+                  border: none;
+            }
       }
 }
 

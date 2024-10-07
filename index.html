@@ -16,7 +16,7 @@
       </header>
       <div class="container">
             <div class="addNew">
-                  <button>+ Adicionar nova aquisição</button>
+                  <button onclick="addNew()">+ Adicionar nova aquisição</button>
             </div>
             <div class="table">
                   <div class="tableHead">
@@ -28,16 +28,8 @@
                         <div class="cell"><h5>Data</h5></div>
                         <div class="cell"><h5>Solicitante</h5></div>
                   </div>
-
-                  <div class="row">
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                        <div class="cell"><input type="text" value="" disabled/></div>
-                  </div>
+                  
+                  <div style="visibility: hidden"><input type="text" disabled></div>
             </div>
       </div>
 
