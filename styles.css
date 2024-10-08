@@ -13,6 +13,8 @@
       --buttonColor: #744abc;
 }
 
+
+
 * {
       margin: 0;
       box-sizing: border-box;
@@ -85,6 +87,7 @@ header {
             background-color: var(--buttonColor);
             color: var(--textColor);
       }
+    
 }
 
 .container {

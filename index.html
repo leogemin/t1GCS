@@ -16,7 +16,8 @@
       </header>
       <div class="container">
             <div class="addNew">
-                  <button onclick="addNew()">+ Adicionar nova aquisição</button>
+                  <button class = "ok" onclick="gremioGigante()" style="display: none;">OK</button>
+                  <button class = "adicionar" onclick="addNew(), visibilidade()">+ Adicionar nova aquisição</button>
             </div>
             <div class="table">
                   <div class="tableHead">
@@ -29,7 +30,7 @@
                         <div class="cell"><h5>Solicitante</h5></div>
                   </div>
                   
-                  <div style="visibility: hidden"><input type="text" disabled></div>
+                  <div class = "inputs"style="visibility: hidden"><input type="text" disabled></div>
             </div>
       </div>
 
