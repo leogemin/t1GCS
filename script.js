@@ -5,7 +5,7 @@ const toggleTheme = () => {
 
 
 const addNew = () => {
-      const tabela = document.querySelector(".table");
+      const tabela = document.querySelector(".tableBody");
       const primeiraRow = tabela.children[1]; 
   
       const newRow = document.createElement("div");
@@ -26,7 +26,7 @@ const addNew = () => {
   }
   
   const gremioGigante = () => {
-      const tabela = document.querySelector(".table");
+      const tabela = document.querySelector(".tableBody");
       const newRow = tabela.querySelector(".row"); 
       const inputs = newRow.querySelectorAll(".inputField"); 
   

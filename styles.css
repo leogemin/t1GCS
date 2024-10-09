@@ -110,12 +110,17 @@ header {
       backdrop-filter: blur(10px);
       background-color: var(--tableBackground);
 }
+.tableBody {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+}
 .row, .tableHead {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       width: 100%;
       border-bottom: 1px solid var(--textSecondColor);
-      height: 75px;
+      padding: 20px 0;
 }
 
 .cell {
