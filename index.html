@@ -37,45 +37,40 @@
             </div>
       </div>
 
-      
-      
       <fieldset class="floatingMenu">
             <legend>Settings</legend>
             <div class="userChanger">
-                 <select >
-                  <optgroup label="Financeiro"></optgroup>
-                        <option value="">Pedro</option>
-                        <option value="">Frederico</option>
-                        <option value="">Luca</option>
-                  </optgroup>
-
-                  <optgroup label="RH"></optgroup>
-                        <option value="">Ana</option>
-                        <option value="">Luiza</option>
-                        <option value="">Gabriel</option>
-                  </optgroup>
-
-                  <optgroup label="Engenharia"></optgroup>
-                        <option value="">Rodrigo</option>
-                        <option value="">Lucas</option>
-                        <option value="">Bernardo</option>
-                  </optgroup>
-
-                  <optgroup label="Manutenção"></optgroup>
-                        <option value="">Leonardo</option>
-                        <option value="">Filipe</option>
-                        <option value="">Mateus</option>
-                  </optgroup>
-
-                  <optgroup label="Administração"></optgroup>
-                        <option value="">Juliano</option>
-                        <option value="">Pasternak</option>
-                        <option value="">Odorico</option>
-                  </optgroup>
-
-                 </select>
-
-                  
+                  <select id="userSelector" onchange="setUsuario(this)">
+                        <optgroup label="Financeiro"></optgroup>
+                              <option value="Pedro">Pedro</option>
+                              <option value="Frederico">Frederico</option>
+                              <option value="Luca">Luca</option>
+                        </optgroup>
+                      
+                        <optgroup label="RH"></optgroup>
+                              <option value="Ana">Ana</option>
+                              <option value="Luiza">Luiza</option>
+                              <option value="Gabriel">Gabriel</option>
+                        </optgroup>
+                      
+                        <optgroup label="Engenharia"></optgroup>
+                              <option value="Rodrigo">Rodrigo</option>
+                              <option value="Lucas">Lucas</option>
+                              <option value="Bernardo">Bernardo</option>
+                        </optgroup>
+                      
+                        <optgroup label="Manutenção"></optgroup>
+                              <option value="Leonardo">Leonardo</option>
+                              <option value="Filipe">Filipe</option>
+                              <option value="Mateus">Mateus</option>
+                        </optgroup>
+                      
+                        <optgroup label="Administração"></optgroup>
+                              <option value="Juliano">Juliano</option>
+                              <option value="Pasternak">Pasternak</option>
+                              <option value="Odorico">Odorico</option>
+                        </optgroup>
+                  </select>
             </div>
             <div class="themeChanger">
                   <label class="switch">

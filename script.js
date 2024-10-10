@@ -1,4 +1,6 @@
-let usuarioLogado = "";
+var usuarioLogado
+
+const userSelector = document.getElementById('userSelector')
 
 const toggleTheme = () => {
     document.querySelector('body').classList.toggle('darkmode')
@@ -6,7 +8,7 @@ const toggleTheme = () => {
 
 const openRow = (e) => {
     e.currentTarget.classList.toggle('open')
-    e.currentTarget.classList.toggle('row')
+    e.currentTarget.classList.toggle('row')    
 }
 
 const addNew = () => {
@@ -28,7 +30,6 @@ const addNew = () => {
             newRow.appendChild(celula)
         }
         tabela.insertBefore(newRow, primeiraRow)
-        // newRow.addEventListener('click', openRow)
     }
 }
 
@@ -36,16 +37,27 @@ const gremioGigante = () => {
     const tabela = document.querySelector(".tableBody")
     const primeiraRow = tabela.firstElementChild
 
-    if (primeiraRow) {
-        primeiraRow.addEventListener('click', openRow)
-
+    if (primeiraRow && !primeiraRow.querySelector('input').disabled) {
         const inputs = primeiraRow.querySelectorAll('input')
-        inputs.forEach(input => {
-            input.disabled = true
-        })
-    }
+        let preenchido = true
 
-    document.querySelector('.ok').style.display = 'none'
+        inputs.forEach(input => {
+            if (input.value == "") {
+                preenchido = false
+            }
+        })
+
+        if (preenchido == true) {
+            inputs.forEach(input => {
+                input.disabled = true
+            })    
+            primeiraRow.addEventListener('click', openRow)
+            document.querySelector('.ok').style.display = 'none'
+        }
+        else {
+            alert("Preencha todos os campos")
+        }
+    }
 }
 
 function visibilidade() {
@@ -55,22 +67,25 @@ function visibilidade() {
     }
 }
 
-const settarUsuario = () => {
-    const selectedUser = document.querySelector('.userChanger select').value;
-    usuarioLogado = selectedUser;
-    console.log("Usuário logado: " + usuarioLogado); // Corrigir o trecho: nome do usuário não é printado
+const setUsuario = (e) => {
+    console.log(e.value)
 }
 
 function administradorEstaOnline() {
-    const label = document.querySelector('.userChanger select').value;
+    const label = userSelector.value
 
     if (label === "Juliano" || label === "Pasternak" || label === "Odorico") {
-        habilitarPermissoesAdministrador();
+        habilitarPermissoesAdministrador()
     } else {
-        alert("Você não tem permissão para acessar essas funcionalidades.");
+        alert("Você não tem permissão para acessar essas funcionalidades.")
     }
 }
 
 document.querySelector('.adicionar').addEventListener('click', visibilidade)
 document.querySelector('.ok').addEventListener('click', gremioGigante)
-document.querySelector('.userChanger select').addEventListener('change', settarUsuario);
+
+document.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        gremioGigante()
+    }
+})

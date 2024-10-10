@@ -66,9 +66,14 @@ header {
 .open {
       height: 350px;
       border-bottom: 1px solid var(--textSecondColor);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       & > div > input {
             background: #744abc;
             height: 40px;
+            width: 100%;
             margin-bottom: 3px;
             margin-top: 3px;
             color: #ffffff;
