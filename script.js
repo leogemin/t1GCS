@@ -1,3 +1,5 @@
+let usuarioLogado = "";
+
 const toggleTheme = () => {
     document.querySelector('body').classList.toggle('darkmode')
 }
@@ -53,8 +55,22 @@ function visibilidade() {
     }
 }
 
+const settarUsuario = () => {
+    const selectedUser = document.querySelector('.userChanger select').value;
+    usuarioLogado = selectedUser;
+    console.log("Usuário logado: " + usuarioLogado); // Corrigir o trecho: nome do usuário não é printado
+}
+
 function administradorEstaOnline() {
+    const label = document.querySelector('.userChanger select').value;
+
+    if (label === "Juliano" || label === "Pasternak" || label === "Odorico") {
+        habilitarPermissoesAdministrador();
+    } else {
+        alert("Você não tem permissão para acessar essas funcionalidades.");
+    }
 }
 
 document.querySelector('.adicionar').addEventListener('click', visibilidade)
 document.querySelector('.ok').addEventListener('click', gremioGigante)
+document.querySelector('.userChanger select').addEventListener('change', settarUsuario);
