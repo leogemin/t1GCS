@@ -244,4 +244,22 @@ input:disabled {
 .slider.round:before {
       border-radius: 50%;
 }
-
+select {
+     
+      transition: color 0s 2147483647s;
+    }
+    
+    select:hover,
+    select:focus,
+    select:active,
+    select:focus {
+      color:black;
+      transition:0s;
+    }
+    
+    select option {
+      color: #333;
+    }
+    select optgroup{
+      color: #0a0a0a;
+    }
