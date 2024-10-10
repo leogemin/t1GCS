@@ -63,6 +63,18 @@ header {
       }
 }
 
+.open {
+      height: 350px;
+      border-bottom: 1px solid var(--textSecondColor);
+      /*        FRED WORKSPACE:        */
+
+
+
+      /*                                */
+      & > div > input {
+            background: red;
+      }
+}
 
 .addNew {
       width: 63%;
@@ -90,7 +102,9 @@ header {
       }
     
 }
-
+.tableBody > div {
+      transition: 300ms all ease-in-out;
+}
 .container {
       width: 100%;
       display: flex;
@@ -124,6 +138,7 @@ header {
       width: 100%;
       border-bottom: 1px solid var(--textSecondColor);
       padding: 20px 0;
+      height: 60px;
 }
 
 .cell {
