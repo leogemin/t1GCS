@@ -16,8 +16,8 @@
       </header>
       <div class="container">
             <div class="addNew">
-                  <button class = "ok" onclick="gremioGigante()" style="display: none;">OK</button>
-                  <button class = "adicionar" onclick="addNew(), visibilidade()">+ Adicionar nova aquisição</button>
+                  <button class="ok" onclick="gremioGigante()" style="display: none;">OK</button>
+                  <button class="adicionar" onclick="addNew(), visibilidade()">+ Adicionar nova aquisição</button>
             </div>
             <div class="table">
                   <div class="tableHead">
@@ -31,9 +31,8 @@
                   </div>
                   
                   <div class="tableBody">
-                        <div class = "inputs" style="visibility: hidden; height: 0px;"><input type="text" disabled></div>
+                        <div class="inputs" style="visibility: hidden; height: 0px;"><input type="text" disabled></div>
                   </div>
-
             </div>
       </div>
 
@@ -41,31 +40,27 @@
             <legend>Settings</legend>
             <div class="userChanger">
                   <select id="userSelector" onchange="setUsuario(this)">
-                        <optgroup label="Financeiro"></optgroup>
+                        <optgroup label="Financeiro">
                               <option value="Pedro">Pedro</option>
                               <option value="Frederico">Frederico</option>
                               <option value="Luca">Luca</option>
                         </optgroup>
-                      
-                        <optgroup label="RH"></optgroup>
+                        <optgroup label="RH">
                               <option value="Ana">Ana</option>
                               <option value="Luiza">Luiza</option>
                               <option value="Gabriel">Gabriel</option>
                         </optgroup>
-                      
-                        <optgroup label="Engenharia"></optgroup>
+                        <optgroup label="Engenharia">
                               <option value="Rodrigo">Rodrigo</option>
                               <option value="Lucas">Lucas</option>
                               <option value="Bernardo">Bernardo</option>
                         </optgroup>
-                      
-                        <optgroup label="Manutenção"></optgroup>
+                        <optgroup label="Manutenção">
                               <option value="Leonardo">Leonardo</option>
                               <option value="Filipe">Filipe</option>
                               <option value="Mateus">Mateus</option>
                         </optgroup>
-                      
-                        <optgroup label="Administração"></optgroup>
+                        <optgroup label="Administração">
                               <option value="Juliano">Juliano</option>
                               <option value="Pasternak">Pasternak</option>
                               <option value="Odorico">Odorico</option>
@@ -79,7 +74,6 @@
                   </label>
             </div>
       </fieldset>
-      
       
       <script src="script.js"></script>
 </body>
