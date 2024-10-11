@@ -1,3 +1,4 @@
+/* Colors */
 :root {
       --backgroundColorSecondary: #493669;
       --textColor: #ffffff;
@@ -12,9 +13,9 @@
       --tableBackground: #0000003A;
       --buttonColor: #744abc;
 }
+/****************/
 
-
-
+/* Estilização Básica */
 * {
       margin: 0;
       box-sizing: border-box;
@@ -22,7 +23,6 @@
 
       color: var(--textSecondColor);
 }
-
 body {
       background-color: var(--backgroundColorSecondary);
       position: relative;
@@ -38,7 +38,6 @@ body::before {
       z-index: -1;
       clip-path: circle(130% at 37% -135%);
 }
-
 header {
       width: 100%;
       height: 100px;
@@ -48,7 +47,6 @@ header {
       justify-content: center;
       align-items: center;
 }
-
 .title {
       display: flex;
       flex-direction: column;
@@ -62,18 +60,7 @@ header {
             font-weight: normal;
       }
 }
-
-.open {
-      height: 350px;
-      border-bottom: 1px solid var(--textSecondColor);
-      & > div > input {
-            background: #744abc;
-            height: 40px;
-            margin-bottom: 3px;
-            margin-top: 3px;
-            color: #ffffff;
-      }
-}
+/**********/
 
 .addNew {
       width: 63%;
@@ -101,6 +88,7 @@ header {
       }
     
 }
+
 .tableBody > div {
       transition: 300ms all ease-in-out;
 }
@@ -113,7 +101,7 @@ header {
       height: 100%;
       gap: 10px;
 }
-.table { /* CSS da Tabela*/
+.table {
       display: flex;
       flex-direction: column;
       border: 1px solid var(--textSecondColor);
@@ -139,7 +127,22 @@ header {
       padding: 20px 0;
       height: 60px;
 }
-
+.open {
+      height: 350px;
+      border-bottom: 1px solid var(--textSecondColor);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      & > div > input {
+            background: #744abc;
+            height: 40px;
+            width: 100%;
+            margin-bottom: 3px;
+            margin-top: 3px;
+            color: #ffffff;
+      }
+}
 .cell {
       display: flex;
       justify-content: center;
