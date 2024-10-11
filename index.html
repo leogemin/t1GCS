@@ -8,6 +8,44 @@
 </head>
 <body>
 
+      <fieldset class="floatingMenu">
+            <legend>Settings</legend>
+            <div class="userChanger">
+                  <select id="userSelector" onchange="setUsuario(this)" onclick="toggleArrow()" onblur="toggleArrow()">
+                        <optgroup label="Financeiro">
+                              <option value="Pedro">Pedro</option>
+                              <option value="Frederico">Frederico</option>
+                              <option value="Luca">Luca</option>
+                        </optgroup>
+                        <optgroup label="RH">
+                              <option value="Ana">Ana</option>
+                              <option value="Luiza">Luiza</option>
+                              <option value="Gabriel">Gabriel</option>
+                        </optgroup>
+                        <optgroup label="Engenharia">
+                              <option value="Rodrigo">Rodrigo</option>
+                              <option value="Lucas">Lucas</option>
+                              <option value="Bernardo">Bernardo</option>
+                        </optgroup>
+                        <optgroup label="Manutenção">
+                              <option value="Leonardo">Leonardo</option>
+                              <option value="Filipe">Filipe</option>
+                              <option value="Mateus">Mateus</option>
+                        </optgroup>
+                        <optgroup label="Administração">
+                              <option value="Juliano">Juliano</option>
+                              <option value="Pasternak">Pasternak</option>
+                              <option value="Odorico">Odorico</option>
+                        </optgroup>
+                  </select>
+            </div>
+            <div class="themeChanger">
+                  <label class="switch">
+                        <input onclick="toggleTheme()" type="checkbox">
+                        <span class="slider round"></span>
+                  </label>
+            </div>
+      </fieldset>
       
       <script src="script.js"></script>
 </body>
