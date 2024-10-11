@@ -643,9 +643,14 @@ function administradorEstaOnline() {
 }
 
 let isOpen = false
-const toggleArrow = () => {
+const toggleArrow = (blur) => {
     const selectUser = document.querySelector('.userChanger');
     isOpen = !isOpen
+
+    if (blur === true){
+        isOpen = false
+    }
+
     if (isOpen) {
       selectUser.classList.add('selectOpen');
     } else {
