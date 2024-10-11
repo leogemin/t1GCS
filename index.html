@@ -17,7 +17,7 @@
       <div class="container">
             <div class="addNew">
                   <button class="ok" onclick="gremioGigante()" style="display: none;">OK</button>
-                  <button class="adicionar" onclick="addNew(), visibilidade()">+ Adicionar nova aquisição</button>
+                  <button class="adicionar" onclick="addNewInput(), visibilidade()">+ Adicionar nova aquisição</button>
             </div>
             <div class="table">
                   <div class="tableHead">
@@ -36,10 +36,26 @@
             </div>
       </div>
 
+      <fieldset class="floatingMenuAdmin" style="display: none;">
+            <legend>Admin</legend>
+            <div class="admin-stats">
+                <span id="totalPedidos">Total de Pedidos: </span>
+                <span id="pedidosAprovados">Pedidos Aprovados: </span>
+                <span id="pedidosReprovados">Pedidos Reprovados: </span>
+                <span id="percentualAprovados">Percentual Aprovados: </span>
+                <span id="percentualReprovados">Percentual Reprovados: </span>
+                <span id="pedidosUltimos30Dias">Pedidos nos últimos 30 dias: </span>
+                <span id="valorMedioPedidos">Valor médio dos pedidos (últimos 30 dias): </span>
+                <span id="valorTotalCategorias">Valor total por categoria (últimos 30 dias): </span>
+                <span id="maiorPedidoAberto">Maior pedido ainda aberto: </span>
+            </div>
+        </fieldset>
+
       <fieldset class="floatingMenu">
             <legend>Settings</legend>
             <div class="userChanger">
                   <select id="userSelector" onchange="setUsuario(this)">
+                        <option hidden>Selecione um Usuário</option>
                         <optgroup label="Financeiro">
                               <option value="Pedro">Pedro</option>
                               <option value="Frederico">Frederico</option>
@@ -68,6 +84,7 @@
                   </select>
             </div>
             <div class="themeChanger">
+                  <span>Tema:</span>
                   <label class="switch">
                         <input onclick="toggleTheme()" type="checkbox">
                         <span class="slider round"></span>

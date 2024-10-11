@@ -388,17 +388,21 @@ const data = [
     }
 ]
 
+function isAdmin(usuario) {
+    const admins = ["Juliano", "Pasternak", "Odorico"]
+    return admins.includes(usuario)
+}
 
 function carregarDados() {
     const usuarioAtual = usuarioLogado
     const tabela = document.querySelector(".tableBody")
-    tabela.innerHTML = ""  // Limpa a tabela antes de adicionar novos dados
+    tabela.innerHTML = ""
 
     let usuarioEncontrado = false
 
     data.forEach(departamento => {
         departamento.Funcionarios.forEach(funcionario => {
-            if (funcionario.Nome === usuarioAtual) {
+            if (funcionario.Nome === usuarioAtual || isAdmin(usuarioAtual)) {
                 usuarioEncontrado = true
                 funcionario.Aquisicoes.forEach(aquisicao => {
                     const newRow = document.createElement("div")
@@ -417,7 +421,13 @@ function carregarDados() {
                     celulas.forEach(celulaContent => {
                         const celula = document.createElement("div")
                         celula.className = "cell"
-                        celula.textContent = celulaContent
+
+                        const cellInput = document.createElement("input")
+                        cellInput.type = "text"
+                        cellInput.classList.add("inputField")
+                        cellInput.value = celulaContent
+                        cellInput.disabled = true
+                        celula.appendChild(cellInput)
                         newRow.appendChild(celula)
                     })
 
@@ -444,7 +454,7 @@ const openRow = (e) => {
     e.currentTarget.classList.toggle('row')    
 }
 
-const addNew = () => {
+const addNewInput = () => {
     const tabela = document.querySelector(".tableBody")
     const primeiraRow = tabela.firstElementChild
 
@@ -466,6 +476,116 @@ const addNew = () => {
     }
 }
 
+function calcularEstatisticas() {
+    let totalPedidos = 0
+    let pedidosAprovados = 0
+    let pedidosReprovados = 0
+    let pedidosUltimos30Dias = 0
+    let valorTotalUltimos30Dias = 0
+    let valorMedioPedidos = 0
+    let valorTotalCategorias = {}
+    let maiorPedidoAberto = null
+
+    const dataAtual = new Date()
+    const data30DiasAtras = new Date()
+    data30DiasAtras.setDate(dataAtual.getDate() - 30)
+
+    data.forEach(departamento => {
+        valorTotalCategorias[departamento.Titulo] = 0
+
+        departamento.Funcionarios.forEach(funcionario => {
+            funcionario.Aquisicoes.forEach(aquisicao => {
+                totalPedidos++
+
+                if (aquisicao.Status === "Aprovado") {
+                    pedidosAprovados++
+                } else if (aquisicao.Status === "Reprovado") {
+                    pedidosReprovados++
+                }
+
+                const dataAquisicao = new Date(aquisicao.Data)
+
+                if (dataAquisicao >= data30DiasAtras && dataAquisicao <= dataAtual) {
+                    pedidosUltimos30Dias++
+                    valorTotalUltimos30Dias += aquisicao.Valor_Total
+
+                    valorTotalCategorias[departamento.Titulo] += aquisicao.Valor_Total
+                }
+
+                if (aquisicao.Status === "Aberto") {
+                    if (!maiorPedidoAberto || aquisicao.Valor_Total > maiorPedidoAberto.Valor_Total) {
+                        maiorPedidoAberto = aquisicao
+                    }
+                }
+            })
+        })
+    })
+
+    const percentualAprovados = ((pedidosAprovados / totalPedidos) * 100).toFixed(2)
+    const percentualReprovados = ((pedidosReprovados / totalPedidos) * 100).toFixed(2)
+
+    if (pedidosUltimos30Dias > 0) {
+        valorMedioPedidos = (valorTotalUltimos30Dias / pedidosUltimos30Dias).toFixed(2)
+    } else {
+        valorMedioPedidos = 0
+    }
+
+    document.getElementById('totalPedidos').textContent = `Total de Pedidos: ${totalPedidos}`
+    document.getElementById('pedidosAprovados').textContent = `Pedidos Aprovados: ${pedidosAprovados}`
+    document.getElementById('pedidosReprovados').textContent = `Pedidos Reprovados: ${pedidosReprovados}`
+    document.getElementById('percentualAprovados').textContent = `Percentual Aprovados: ${percentualAprovados}%`
+    document.getElementById('percentualReprovados').textContent = `Percentual Reprovados: ${percentualReprovados}%`
+    document.getElementById('pedidosUltimos30Dias').textContent = `Pedidos nos últimos 30 dias: ${pedidosUltimos30Dias}`
+    document.getElementById('valorMedioPedidos').textContent = `Valor médio dos pedidos (últimos 30 dias): R$ ${valorMedioPedidos}`
+
+    let categoriasTexto = ''
+    for (const [categoria, valor] of Object.entries(valorTotalCategorias)) {
+        categoriasTexto += `${categoria}: R$ ${valor.toFixed(2)}\n`
+    }
+    document.getElementById('valorTotalCategorias').textContent = `Valor total por categoria (últimos 30 dias):\n${categoriasTexto}`
+
+    if (maiorPedidoAberto) {
+        document.getElementById('maiorPedidoAberto').textContent = `Maior pedido ainda aberto:\nDescrição: ${maiorPedidoAberto.Descricao}, Valor Total: R$ ${maiorPedidoAberto.Valor_Total.toFixed(2)}, Solicitante: ${maiorPedidoAberto.Solicitante}`
+    } else {
+        document.getElementById('maiorPedidoAberto').textContent = `Maior pedido ainda aberto: Não há pedidos abertos no momento.`
+    }
+}
+
+
+const addNew = () => {
+    const tabela = document.querySelector(".tableBody")
+    const primeiraRow = tabela.firstElementChild
+
+    if (primeiraRow && !primeiraRow.querySelector('input').disabled) {
+        const inputs = primeiraRow.querySelectorAll('input')
+        const novaAquisicao = {
+            Descricao: inputs[0].value,
+            Valor_Uni: parseFloat(inputs[1].value.replace("R$", "").trim()),
+            Quantidade: parseInt(inputs[2].value),
+            Valor_Total: parseFloat(inputs[3].value.replace("R$", "").trim()),
+            Status: inputs[4].value,
+            Data: inputs[5].value,
+            Solicitante: usuarioLogado
+        }
+
+        let aquisicaoAdicionada = false
+        data.forEach(departamento => {
+            departamento.Funcionarios.forEach(funcionario => {
+                if (funcionario.Nome === usuarioLogado) {
+                    funcionario.Aquisicoes.unshift(novaAquisicao)
+                    aquisicaoAdicionada = true
+                }
+            })
+        })
+
+        if (aquisicaoAdicionada) {
+            carregarDados()
+        } else {
+            alert("Usuário não encontrado para adicionar aquisição.")
+        }
+    }
+}
+
 const gremioGigante = () => {
     const tabela = document.querySelector(".tableBody")
     const primeiraRow = tabela.firstElementChild
@@ -481,13 +601,13 @@ const gremioGigante = () => {
         })
 
         if (preenchido == true) {
+            addNew()
             inputs.forEach(input => {
                 input.disabled = true
             })    
             primeiraRow.addEventListener('click', openRow)
             document.querySelector('.ok').style.display = 'none'
-        }
-        else {
+        } else {
             alert("Preencha todos os campos")
         }
     }
@@ -502,7 +622,14 @@ function visibilidade() {
 
 const setUsuario = (e) => {
     usuarioLogado = e.value
-    carregarDados()  // Atualiza a tabela quando o usuário é alterado
+    carregarDados()
+
+    if (isAdmin(usuarioLogado)) {
+        calcularEstatisticas()
+        document.querySelector('.floatingMenuAdmin').style.display = 'block'
+    } else {
+        document.querySelector('.floatingMenuAdmin').style.display = 'none'
+    }
 }
 
 function administradorEstaOnline() {
@@ -515,7 +642,6 @@ function administradorEstaOnline() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', carregarDados)
 document.querySelector('.adicionar').addEventListener('click', visibilidade)
 document.querySelector('.ok').addEventListener('click', gremioGigante)
 

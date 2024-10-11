@@ -134,13 +134,17 @@ header {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      & > div > input {
+      & > .cell > input {
             background: #744abc;
             height: 40px;
             width: 100%;
             margin-bottom: 3px;
             margin-top: 3px;
             color: #ffffff;
+      }
+
+      & > .cell {
+            width: 100%;
       }
 }
 .cell {
@@ -167,6 +171,37 @@ header {
       }
 }
 
+.floatingMenuAdmin {
+      height: 420px;
+      width: 200px;
+      position: fixed;
+      left: 1%;
+      bottom: 3%;
+
+      background-color: var(--backgroundColorSecondary);
+      border-radius: 10px;
+
+      overflow: auto;
+
+      legend {
+            font-size: 14px;
+            color: var(--textColor);
+            padding: 5px 10px;
+            background-color: var(--backgroundColorSecondary);
+            border-radius: 10px;
+            border: 1px solid var(--textColor);
+      }
+
+      span {
+            color: var(--textColor);
+      }
+}
+.admin-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+}
+
 .floatingMenu {
       height: 120px;
       width: 170px;
@@ -180,6 +215,10 @@ header {
             font-size: 14px;
             color: var(--textColor);
             padding: 5px 10px;
+      }
+
+      span {
+            color: var(--textColor);
       }
 }
 
@@ -278,6 +317,9 @@ input:checked + .slider:before {
 }
 input:disabled {
       text-align: center;
+      text-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 }
 .slider.round {
       border-radius: 34px;
@@ -287,21 +329,20 @@ input:disabled {
       border-radius: 50%;
 }
 select {
-     
       transition: color 0s 2147483647s;
-    }
+}
     
-    select:hover,
-    select:focus,
-    select:active,
-    select:focus {
+select:hover,
+select:focus,
+select:active,
+select:focus {
       color:black;
       transition:0s;
-    }
-    
-    select option {
+}
+
+select option {
       color: #333;
-    }
-    select optgroup{
+}
+select optgroup{
       color: #0a0a0a;
-    }
+}
