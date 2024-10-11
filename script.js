@@ -642,6 +642,17 @@ function administradorEstaOnline() {
     }
 }
 
+let isOpen = false
+const toggleArrow = () => {
+    const selectUser = document.querySelector('.userChanger');
+    isOpen = !isOpen
+    if (isOpen) {
+      selectUser.classList.add('selectOpen');
+    } else {
+      selectUser.classList.remove('selectOpen');
+    }
+}
+
 document.querySelector('.adicionar').addEventListener('click', visibilidade)
 document.querySelector('.ok').addEventListener('click', gremioGigante)
 

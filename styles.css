@@ -234,6 +234,7 @@ header {
       width: 100%;
       padding: 5px 10px;
       font-size: 16px;
+      margin-bottom: 10px;
       border: 2px solid #493669;
       border-radius: 10px;
       background-color: #ddd8e4;
@@ -254,13 +255,19 @@ header {
 .userChanger::after {
       content: '▼';
       position: absolute;
-      top: 50%;
+      top: 45%;
       right: 15px;
       transform: translateY(-50%);
       pointer-events: none;
       color: #48009b;
       font-size: 12px;
+      transition: transform 0.2s ease;
 }
+
+.userChanger.selectOpen::after{
+      transform: translateY(-50%) rotate(180deg);
+}
+
 
 /*                           *   
       Botão Toggle Theme      
