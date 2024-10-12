@@ -404,6 +404,7 @@ function carregarDados() {
         departamento.Funcionarios.forEach(funcionario => {
             if (funcionario.Nome === usuarioAtual || isAdmin(usuarioAtual)) {
                 usuarioEncontrado = true
+                
                 funcionario.Aquisicoes.forEach(aquisicao => {
                     const newRow = document.createElement("div")
                     newRow.className = "row"
@@ -629,16 +630,6 @@ const setUsuario = (e) => {
         document.querySelector('.floatingMenuAdmin').style.display = 'block'
     } else {
         document.querySelector('.floatingMenuAdmin').style.display = 'none'
-    }
-}
-
-function administradorEstaOnline() {
-    const label = userSelector.value
-
-    if (label === "Juliano" || label === "Pasternak" || label === "Odorico") {
-        habilitarPermissoesAdministrador()
-    } else {
-        alert("Você não tem permissão para acessar essas funcionalidades.")
     }
 }
 

@@ -349,3 +349,24 @@ select option {
 select optgroup{
       color: #0a0a0a;
 }
+
+.searchBox {
+      padding: 10px 0px;
+
+      & > label {
+            padding: 5px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            border: 1px solid #a3a3a3;
+            gap: 3px;
+      }
+
+      & > label > input {
+            outline: none;
+            border: none;
+            background: none;
+            color: #000;
+      }
+}
